@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  web:
+    build: .
+#    command:
+#      - "npm install"
+#      - "npm start"
+    ports:
+      - "5000:8080"
+    volumes:
+      - .:/usr/src/app
