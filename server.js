@@ -11,12 +11,13 @@ const HOST = '0.0.0.0';
 // App
 
 const app = express();
+app.use(express.static('public'));
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => {
-    res.render('home', {title: 'Тестораскатки и лапшерезки IMPERIA'});
+    res.render('home', {title: 'Тестораскатки и лапшерезки'});
 });
 
 app.get('/about', (req, res) => {
