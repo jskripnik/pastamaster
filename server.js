@@ -3,6 +3,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 
+
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
@@ -23,14 +24,18 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
-
-app.get('/products', (req, res) => {
-    res.send('products');
-});
-
 app.get('/products/:id', (req, res) => {
-    res.send('products' + req.params.id)
+
+    res.render('./products/product-1', {product: req.params.id})
+
 });
+
+
+
+
+
+
+
 
 
 
