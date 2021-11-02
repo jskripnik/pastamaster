@@ -26,6 +26,7 @@ app.get('/about', (req, res) => {
 });
 app.get('/products/:id', (req, res) => {
 
+    console.log("fork!")
     res.render(`./products/product-${req.params.id}`, {product: req.params.id})
 
 });
