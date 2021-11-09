@@ -1,5 +1,42 @@
 <!--главная страница с товарами-->
-      <div class="row g-0">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">Форма заказа</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="exampleInputName1" class="form-label">Имя</label>
+                    <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+                    <div id="nameHelp" class="form-text">Обязательное поле</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputTelephone1" class="form-label">Телефон</label>
+                    <input type="number" class="form-control" id="exampleInputTelephone1">
+                    <div id="telephoneHelp" class="form-text">Обязательное поле</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email адрес</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">Обязательное поле</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-primary">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row g-0">
         <h4 class="card-title">Лапшерезка ручная 117 RAME</h4>
         <div class="col-md-3">
             <img src="http://www.rp.ru/img/eq/imperia/b8117-2_s.jpg" class="img-fluid rounded-start" alt="...">
@@ -25,10 +62,13 @@
                     <b>Цена:</b>
                     7 085 руб
                 </h5>
-                <a href="" class="btn btn-primary">Заказать</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Заказать
+                </button>
             </div>
         </div>
     </div>
+
     <div class="row g-0">
         <h4 class="card-title">Лапшерезка ручная 119 NERA</h4>
         <div class="col-md-3">
@@ -151,5 +191,4 @@
             </div>
         </div>
     </div>
-
 
