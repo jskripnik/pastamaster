@@ -2,6 +2,7 @@
 
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 
 // Constants
@@ -12,6 +13,8 @@ const HOST = '0.0.0.0';
 // App
 
 const app = express();
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 app.use(express.static('public'));
 
 app.engine('handlebars', exphbs());
@@ -24,6 +27,13 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
+
+app.post('/home', urlencodedParser, (req, res) => {
+    if (!req.body) return res.sendStatus(400)
+    console.log(req.body);
+    res.render('success', {data: req.body});
+});
+
 app.get('/products/:id', (req, res) => {
 
     console.log("fork!")

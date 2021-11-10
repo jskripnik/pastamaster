@@ -4,37 +4,36 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-
                 <h5 class="modal-title" id="exampleModalLabel">Форма заказа</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <form method="post" action="home">
                 <div class="mb-3">
                     <label for="exampleInputName1" class="form-label">Имя</label>
-                    <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+                    <input type="text" name="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
                     <div id="nameHelp" class="form-text">Обязательное поле</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputTelephone1" class="form-label">Телефон</label>
-                    <input type="number" class="form-control" id="exampleInputTelephone1">
+                    <input type="number" name="phone" class="form-control" id="exampleInputTelephone1">
                     <div id="telephoneHelp" class="form-text">Обязательное поле</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email адрес</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text">Обязательное поле</div>
                 </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Отправить заявку</button>
-            </div>
+
         </div>
     </div>
 </div>
 
-
-
+<!--товары-->
 
 <div class="row g-0">
         <h4 class="card-title">Лапшерезка ручная 117 RAME</h4>
@@ -42,7 +41,6 @@
             <img src="http://www.rp.ru/img/eq/imperia/b8117-2_s.jpg" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-9">
-
             <div class="card-body">
                 <p class="card-text">Машина для изготовления лапши из хромированной стали Imperia 117 Rame станет стильным аксессуаром на Вашей кухне и лучшим помощником в приготовлении пасты! Встроенные лезвия позволят приготовить тальятелле и феттучине, а также раскатать тесто. Дополнительные насадки можно приобрести отдельно.</p>
                 <p class="card-text"><ul>
