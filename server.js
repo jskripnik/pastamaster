@@ -28,9 +28,8 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
 
-app.post('/home', urlencodedParser, (req, res) => {
+app.post('/success', urlencodedParser, (req, res) => {
     if (!req.body) return res.sendStatus(400)
-    console.log(req.body);
     res.render('success', {data: req.body});
 });
 
