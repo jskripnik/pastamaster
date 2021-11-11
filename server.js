@@ -3,8 +3,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const fs   = require('fs');
-
 
 
 // Constants
@@ -32,14 +30,13 @@ app.get('/about', (req, res) => {
 });
 
 app.post('/success', urlencodedParser, (req, res) => {
-
     const body = {
-        Name1: req.body.exampleInputName1,
-        Telephone1: req.body.exampleInputTelephone1,
-        Email1: req.body.exampleInputEmail1
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email
     }
-    console.log(body)
-    res.render('success', {data: req.body});
+    res.render('success', {data: req.body, body});
+
 });
 
 
