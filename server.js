@@ -3,6 +3,8 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const fs   = require('fs');
+
 
 
 // Constants
@@ -14,6 +16,7 @@ const HOST = '0.0.0.0';
 
 const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 
 app.use(express.static('public'));
 
@@ -29,9 +32,18 @@ app.get('/about', (req, res) => {
 });
 
 app.post('/success', urlencodedParser, (req, res) => {
-    if (!req.body) return res.sendStatus(400)
+
+    const body = {
+        Name1: req.body.exampleInputName1,
+        Telephone1: req.body.exampleInputTelephone1,
+        Email1: req.body.exampleInputEmail1
+    }
+    console.log(body)
     res.render('success', {data: req.body});
 });
+
+
+
 
 app.get('/products/:id', (req, res) => {
 
