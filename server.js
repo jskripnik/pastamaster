@@ -35,7 +35,8 @@ app.post('/success', urlencodedParser, (req, res) => {
         phone: req.body.phone,
         email: req.body.email
     }
-    res.render('success', {data: req.body, body});
+    res.render('success', {body: body});
+
 
 });
 
