@@ -1,23 +1,50 @@
 
+
 <form method="POST" name="f" action="" onsubmit="return false;">
     <div class="mb-3">
-        <input placeholder="Имя бренда" autocomplete="off" type="text" name="" class="form-control">
+        <span>
+Имя бренда
+</span>
+        <input autocomplete="off" type="text" name="" size="100" class="form-control" style="max-width: 700px; width: 100%;">
     </div>
     <div class="mb-3">
-        <input placeholder="Наименование" autocomplete="off" type="text" name="" class="form-control">
+        <span>
+    Имя
+</span>
+        <input autocomplete="off" type="text" name="" size="100" class="form-control" style="max-width: 700px; width: 100%;">
     </div>
     <div class="mb-3">
-        <input placeholder="Артикул" autocomplete="off" type="text" name="" class="form-control">
+        <span>
+    Артикул
+</span>
+        <input autocomplete="off" type="text" name="" size="100" class="form-control" style="max-width: 700px; width: 100%;">
     </div>
     <div class="mb-3">
-        <input placeholder="Цена" autocomplete="off" type="text" name="" class="form-control">
+        <span>
+    Цена
+</span>
+        <input autocomplete="off" type="number" name="" size="100" class="form-control" style="max-width: 700px; width: 100%;">
+    </div>
+    <div>
+    <span>
+Описание
+<br>
+</span>
+    <textarea name="desc_base" cols="30" rows="10" class="form-control" style="height: 100px; max-width: 750px; width: 100%;"></textarea><div class="length_textarea">Длина: 0</div>
+    <br>
     </div>
     <div class="mb-3">
-        <input placeholder="Описание" autocomplete="off" type="text" name="" class="form-control">
-    </div>
-    <div class="mb-3">
-    <input id="upldImg" class="required_file" type="file" name="file.jpg" style="margin:20px 0">
-        <input id="submitImg" class="required_btn btn-primary mb-3"  type="submit" value="Загрузить картинку" name="submit" style="margin:20px 0">
-    </div>
+        <form id="uploadImageProduct" action="" method="post" style="display:none;">
 
+    <input id="upldImg" class="required_file" type="file" name="file.jpg" style="margin:20px 0">
+        </form>
+        <input id="submitImg" class="required_btn btn-primary is-animating" type="submit" value="Загрузить картинку" name="submit">
+    </div>
 </form>
+
+<form id="adminProduct" method="post">
+    <button type="submit" name="submit" class=" btn-success mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect saveBtn" data-upgraded=",MaterialButton,MaterialRipple">
+        Сохранить
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple btn-success is-animating"></span></span></button>&nbsp;&nbsp;
+</form>
+
