@@ -28,6 +28,12 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
+app.get('/admin', (req, res) => {
+    res.render('./admin/admin');
+});
+app.get('/admin/product', (req, res) => {
+    res.render('./admin/admin-product');
+});
 
 app.post('/success', urlencodedParser, (req, res) => {
     const body = {
