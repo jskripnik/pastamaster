@@ -3,6 +3,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const fs = require('fs')
 
 
 // Constants
@@ -24,7 +25,6 @@ app.set('view engine', 'handlebars');
 app.get('/', (req, res) => {
     res.render('home', {title: 'Тестораскатки и лапшерезки'});
 });
-
 app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
@@ -36,16 +36,24 @@ app.get('/admin/product', (req, res) => {
 });
 
 app.post('/success', urlencodedParser, (req, res) => {
+    const name = req.body.name;
+    const phone = req.body.phone;
+    const email =  req.body.email;
+
     const body = {
-        name: req.body.name,
-        phone: req.body.phone,
-        email: req.body.email
+            name,
+            phone,
+            email,
     }
-    res.render('success', {body: body});
-
-
+    fs.writeFile('views/write-body.txt', name + phone + email, err => {
+        if (err) {
+            console.error(err)
+            return
+        }
+        res.render('success', {body: body});
+        console.log(body);
+    })
 });
-
 
 
 
