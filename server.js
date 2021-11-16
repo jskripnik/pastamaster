@@ -49,6 +49,7 @@ app.post('/success', urlencodedParser, (req, res) => {
             if(err) throw err;
             console.log('is written')
         });
+
         fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
         if (err) {
             console.error(err)
