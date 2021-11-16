@@ -45,14 +45,19 @@ app.post('/success', urlencodedParser, (req, res) => {
             phone,
             email,
     }
-    fs.writeFile('views/write-body.txt', name + phone + email, err => {
+        fs.appendFile("views/write-body.txt", "\n" + "name:" + name + "\n" + "phone:" + phone + "\n" + "email:" + email + "\n",err => {
+            if(err) throw err;
+            console.log('is written')
+        });
+        fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
         if (err) {
             console.error(err)
             return
         }
+        console.log(data)
+    })
         res.render('success', {body: body});
         console.log(body);
-    })
 });
 
 
