@@ -38,7 +38,7 @@ app.get('/admin/product', (req, res) => {
 app.post('/success', urlencodedParser, (req, res) => {
     const name = req.body.name;
     const phone = req.body.phone;
-    const email =  req.body.email;
+    const email = req.body.email;
 
     const body = {
             name,
@@ -49,16 +49,18 @@ app.post('/success', urlencodedParser, (req, res) => {
             if(err) throw err;
             console.log('is written')
         });
+    fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
+        if (data.includes(req.body.email))
+         res.status(409).json(
+            'Такой email уже существует'
+        )
+        console.error(err)
+        {
+            res.render('success', {body: body});
+    }
 
-        fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        console.log(data)
     })
-        res.render('success', {body: body});
-        console.log(body);
+
 });
 
 
