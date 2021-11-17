@@ -34,7 +34,6 @@ app.get('/admin', (req, res) => {
 app.get('/admin/product', (req, res) => {
     res.render('./admin/admin-product');
 });
-
 app.post('/success', urlencodedParser, (req, res) => {
     const name = req.body.name;
     const phone = req.body.phone;
@@ -45,18 +44,17 @@ app.post('/success', urlencodedParser, (req, res) => {
             phone,
             email,
     }
-        fs.appendFile("views/write-body.txt", "\n" + "name:" + name + "\n" + "phone:" + phone + "\n" + "email:" + email + "\n",err => {
-            if(err) throw err;
-            console.log('is written')
-        });
     fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
-        if (data.includes(req.body.email))
-         res.status(409).json(
+        if (data.includes(req.body.email)) {
+            console.error(err)
+            res.status(409).json(
             'Такой email уже существует'
-        )
-        console.error(err)
-        {
-            res.render('success', {body: body});
+        )} else {
+            fs.appendFile("views/write-body.txt", "\n" + "name:" + name + "\n" + "phone:" + phone + "\n" + "email:" + email + "\n",err => {
+                if(err) throw err;
+                console.log(body)
+            });
+            res.render('success', {body: email === req.body.email} );
     }
 
     })
