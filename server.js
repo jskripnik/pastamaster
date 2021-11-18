@@ -46,23 +46,18 @@ app.post('/success', urlencodedParser, (req, res) => {
             email,
     }
     fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
-        if (data.includes(req.body.name && req.body.email)) {
-            console.error(err)
-            res.send({"Welcome:": name})
-            res.status(409).json(
-            'Такой email уже существует'
-
-        )} else {
+        if (data.includes(name) && data.includes(email))  {
+            res.render('success', {data: req.body, body})
+        } else {
             fs.appendFile("views/write-body.txt", "\n" + "name:" + name + "\n" + "phone:" + phone + "\n" + "email:" + email + "\n",err => {
                 if(err) throw err;
                 console.log(body)
             });
             res.render('success', {body: body});
-    }
+             }
 
-    })
-
-});
+         })
+        });
 
 
 
