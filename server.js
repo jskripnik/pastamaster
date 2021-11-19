@@ -29,8 +29,17 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
 app.get('/admin', (req, res) => {
+
+
+    if (req.admin)
+
     res.render('./admin/admin');
 });
+
+app.get('/login-admin', (req, res) => {
+    res.render('home');
+});
+
 app.get('/admin/product', (req, res) => {
     res.render('./admin/admin-product');
 });
@@ -47,6 +56,8 @@ app.post('/success', urlencodedParser, (req, res) => {
     }
     fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
         if (data.includes(name) && data.includes(email))  {
+
+        req.admin = true
             res.render('success', {data: req.body, body})
         } else {
             fs.appendFile("views/write-body.txt", "\n" + "name:" + name + "\n" + "phone:" + phone + "\n" + "email:" + email + "\n",err => {

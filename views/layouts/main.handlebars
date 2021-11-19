@@ -20,6 +20,18 @@
             width: 100%;
             padding-bottom: 60px;
         }
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            margin-bottom: 10vh;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -63,9 +75,11 @@
                 >Главная</a>
                 <a class='nav-link' href='/about' title='О компании'>
                     О компании</a>
+
                 <a class='nav-link' href='/admin'>Админ-панель</a>
                 <a class='nav-link' href='/success'></a>
                 <a class='nav-link' href='/admin-product'></a>
+
 
             </div>
             <div>
@@ -77,12 +91,13 @@
 </nav>
 <div class='wrapper mx-auto my-5'>{{{body}}}</div>
 
-<footer class='fixed-bottom'>
-    <nav class='navbar navbar-light bg-light'>
-        <div class='container'>
-            <div class='container text-center py-3'>2021, Pastamaster</div>
-        </div>
-    </nav>
+<footer class=" py-4 navbar-light bg-light">
+
+    <div class="footer__inner">
+        <div class="text-end px-5 mx-auto"><a class='nav-link d-inline-block' href="/login-admin">Служебный вход</a></div>
+        <div class='container text-center py-3'>2021, Pastamaster</div>
+    </div>
+
 </footer>
 </body>
 </html>
