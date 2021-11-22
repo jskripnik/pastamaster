@@ -19,12 +19,18 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.use(session({
     secret: 'key that will be cookie send',
-    resave: true,
+    resave: false,
     saveUninitialized: true,
     })
 
 )
-
+const redirectAdmin = (req, res, next) => {
+    if (!req.session.admin){
+        res.redirect('/')
+    } else{
+        next()
+    }
+}
 
 
 app.use(express.static('public'));
@@ -39,19 +45,30 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
 
-app.get('/admin', (req, res) => {
+app.get('/admin', redirectAdmin, (req, res) => {
 
 
 
     res.render('./admin/admin');
 });
-app.post('/admin', (req, res) => {
-    res.render('./admin/admin');
+app.post('/admin', urlencodedParser, (req, res) => {
+    const {email, password} = req.body
+
+    fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
+
+        if (!data.includes(email) && !data.includes(password))  {
+            req.admin = true
+            console.log(data)
+            return res.redirect('/')
+        } else {
+            res.render('./admin/admin', )
+        }
+    });
 });
 
 
 
-app.get('/admin/product', (req, res) => {
+app.get('/admin/product', redirectAdmin, (req, res) => {
     res.render('./admin/admin-product');
 });
 

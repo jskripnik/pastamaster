@@ -75,14 +75,15 @@
                 >Главная</a>
                 <a class='nav-link' href='/about' title='О компании'>
                     О компании</a>
-
+{{#if req.admin}}
                 <a class='nav-link' href='/admin'>Админ-панель</a>
-                <a class='nav-link' href='/success'></a>
-                <a class='nav-link' href='/admin-product'></a>
+{{/if}}
+                <a href='/success'></a>
+                <a href='/admin-product'></a>
 
 
             </div>
-            <div>
+            <div class="container">
                 <div>Email: info@barneo.ru</div>
                 <div>Телефон: 8-800-333-04-17</div>
             </div>
@@ -91,9 +92,6 @@
 </nav>
 <div class='wrapper mx-auto my-5'>{{{body}}}</div>
 
-    {{#if (req.admin)}}
-
-    {{/if}}
 
 <footer class=" py-4 navbar-light bg-light">
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
