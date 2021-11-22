@@ -4,6 +4,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const fs = require('fs')
+const session = require('express-session')
 
 
 // Constants
@@ -15,6 +16,15 @@ const HOST = '0.0.0.0';
 
 const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+app.use(session({
+    secret: 'key that will be cookie send',
+    resave: true,
+    saveUninitialized: true,
+    })
+
+)
+
 
 
 app.use(express.static('public'));
@@ -28,17 +38,18 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
+
 app.get('/admin', (req, res) => {
 
 
-    if (req.admin)
 
     res.render('./admin/admin');
 });
-
-app.get('/login-admin', (req, res) => {
-    res.render('home');
+app.post('/admin', (req, res) => {
+    res.render('./admin/admin');
 });
+
+
 
 app.get('/admin/product', (req, res) => {
     res.render('./admin/admin-product');

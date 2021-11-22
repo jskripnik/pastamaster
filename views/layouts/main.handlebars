@@ -18,7 +18,7 @@
     <style>
         .wrapper {max-width: 1400px;
             width: 100%;
-            padding-bottom: 60px;
+            padding-bottom: 100px;
         }
         html {
             position: relative;
@@ -91,10 +91,42 @@
 </nav>
 <div class='wrapper mx-auto my-5'>{{{body}}}</div>
 
+    {{#if (req.admin)}}
+
+    {{/if}}
+
 <footer class=" py-4 navbar-light bg-light">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Админ вход</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="./admin" class="form-row justify-content-center">
+
+                        <div class="mb-4">
+                        </div>
+                        <input type="email" placeholder="эл. почта" name="email" class="form-control mt-2">
+                        <input type="password" placeholder="пароль" name="password" class="form-control mt-2">
+
+                        <div class="modal-footer d-flex">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            <button class="d-block btn btn-primary"><span class="spinner-border spinner-border-sm mr-2" style="display: none;"></span>
+                                Войти
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="footer__inner">
-        <div class="text-end px-5 mx-auto"><a class='nav-link d-inline-block' href="/login-admin">Служебный вход</a></div>
+        <div  class="text-end px-5 mx-auto"> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Служебный вход
+        </button></div>
         <div class='container text-center py-3'>2021, Pastamaster</div>
     </div>
 
