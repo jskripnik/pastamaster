@@ -19,18 +19,17 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.use(session({
     secret: 'key that will be cookie send',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     })
 
 )
-const redirectAdmin = (req, res, next) => {
-    if (!req.session.admin){
-        res.redirect('/')
-    } else{
-        next()
-    }
-}
+const auth = function(req, res, next) {
+    if (req.session && req.session.user === "admin@pasta.com" && req.session.admin)
+        return next();
+    else
+        return res.sendStatus(401);
+};
 
 
 app.use(express.static('public'));
@@ -45,31 +44,27 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'О компании'});
 });
 
-app.get('/admin', redirectAdmin, (req, res) => {
+app.get('/admin', auth, (req, res) => {
 
 
 
     res.render('./admin/admin');
 });
-app.post('/admin', urlencodedParser, (req, res) => {
-    const {email, password} = req.body
-
-    fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
-
-        if (!data.includes(email) && !data.includes(password))  {
-            req.admin = true
-            console.log(data)
-            return res.redirect('/')
-        } else {
-            res.render('./admin/admin', )
-        }
-    });
+app.post('/admin', (req, res) => {
+    if (!req.body.email || !req.body.password) {
+        res.redirect('/');
+    } else if(req.body.email === "admin@pasta.com" || req.body.password === "zxcv") {
+        req.session.email = "admin@pasta.com";
+        req.session.admin = true;
+        res.render("/admin/admin");
+    }
 });
 
 
 
-app.get('/admin/product', redirectAdmin, (req, res) => {
-    res.render('./admin/admin-product');
+
+app.get('/admin/product', auth, (req, res) => {
+        res.render('./admin/admin-product')
 });
 
 app.post('/success', urlencodedParser, (req, res) => {

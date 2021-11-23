@@ -75,9 +75,9 @@
                 >Главная</a>
                 <a class='nav-link' href='/about' title='О компании'>
                     О компании</a>
-{{#if req.admin}}
+
                 <a class='nav-link' href='/admin'>Админ-панель</a>
-{{/if}}
+
                 <a href='/success'></a>
                 <a href='/admin-product'></a>
 
@@ -106,8 +106,8 @@
 
                         <div class="mb-4">
                         </div>
-                        <input type="email" placeholder="эл. почта" name="email" class="form-control mt-2">
-                        <input type="password" placeholder="пароль" name="password" class="form-control mt-2">
+                        <input required type="email" placeholder="эл. почта" name="email" class="form-control mt-2">
+                        <input required type="password" placeholder="пароль" name="password" class="form-control mt-2">
 
                         <div class="modal-footer d-flex">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
