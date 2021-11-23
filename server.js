@@ -50,17 +50,20 @@ app.get('/admin', auth, (req, res) => {
 
     res.render('./admin/admin');
 });
-app.post('/admin', (req, res) => {
-    if (!req.body.email || !req.body.password) {
-        res.redirect('/');
-    } else if(req.body.email === "admin@pasta.com" || req.body.password === "zxcv") {
-        req.session.email = "admin@pasta.com";
-        req.session.admin = true;
-        res.render("/admin/admin");
-    }
+app.post('/admin', urlencodedParser, (req, res) => {
+    const {email, password} = req.body
+    fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
+
+        if (!data.includes(email) || !data.includes(password))  {
+            console.log(data)
+            return res.redirect('/')
+        } else {
+            req.session.admin = true
+            req.session.user = req.body.email
+            res.render('./admin/admin')
+        }
+    });
 });
-
-
 
 
 app.get('/admin/product', auth, (req, res) => {
@@ -71,7 +74,6 @@ app.post('/success', urlencodedParser, (req, res) => {
     const name = req.body.name;
     const phone = req.body.phone;
     const email = req.body.email;
-
     const body = {
             name,
             phone,
@@ -89,7 +91,6 @@ app.post('/success', urlencodedParser, (req, res) => {
             });
             res.render('success', {body: body});
              }
-
          })
         });
 

@@ -76,11 +76,16 @@
                 <a class='nav-link' href='/about' title='О компании'>
                     О компании</a>
 
-                <a class='nav-link' href='/admin'>Админ-панель</a>
 
+                </div>
+                <div class="entry">
+{{#if req.session.admin}}
+    <a class='nav-link' href='/admin'>Админ-панель</a>
+
+{{/if}}
+                </div>
                 <a href='/success'></a>
                 <a href='/admin-product'></a>
-
 
             </div>
             <div class="container">
