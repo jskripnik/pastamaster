@@ -45,11 +45,9 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/admin', auth, (req, res) => {
-
-
-
     res.render('./admin/admin');
 });
+
 app.post('/admin', urlencodedParser, (req, res) => {
     const {email, password} = req.body
     fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
@@ -64,6 +62,15 @@ app.post('/admin', urlencodedParser, (req, res) => {
         }
     });
 });
+
+app.get ('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+           return res.redirect('/')
+        }
+        res.render('./home')
+    })
+})
 
 
 app.get('/admin/product', auth, (req, res) => {
