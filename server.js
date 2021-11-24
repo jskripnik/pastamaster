@@ -22,8 +22,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     })
-
 )
+
 const auth = function(req, res, next) {
     if (req.session && req.session.user === "admin@pasta.com" && req.session.admin)
         return next();
