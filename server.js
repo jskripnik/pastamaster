@@ -12,6 +12,7 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 
+
 // App
 
 const app = express();
@@ -32,6 +33,7 @@ const auth = function(req, res, next) {
 };
 
 
+
 app.use(express.static('public'));
 
 app.engine('handlebars', exphbs());
@@ -45,6 +47,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/admin', auth, (req, res) => {
+
     res.render('./admin/admin');
 });
 
@@ -58,7 +61,8 @@ app.post('/admin', urlencodedParser, (req, res) => {
         } else {
             req.session.admin = true
             req.session.user = req.body.email
-            res.render('./admin/admin')
+            const sessAdmin = req.session.admin
+            res.render('home', {sessAdmin})
         }
     });
 });

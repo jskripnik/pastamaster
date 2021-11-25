@@ -75,9 +75,10 @@
                 >Главная</a>
                 <a class='nav-link' href='/about' title='О компании'>
                     О компании</a>
-
+{{#if sessAdmin}}
                 <a class='nav-link' href='/admin'>Админ панель</a>
 
+{{/if}}
                 <a href='/logout' id="logout" class="nav-link">Выход</a>
 
                 </div>
