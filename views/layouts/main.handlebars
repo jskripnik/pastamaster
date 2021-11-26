@@ -46,40 +46,36 @@
         <nav class='navbar navbar-light bg-light'>
             <div class='container'>
                 <a class='navbar-brand'>
-                    <img
-                            src='https://www.barneo.ru/images/logo_blue.svg'
+                    <img src='https://www.barneo.ru/images/logo_blue.svg'
                             alt='logo'
                             width='100'
-                            height='80'/>
-                </a>
+                            height='80'/></a>
             </div>
         </nav>
-        <button
-                class='navbar-toggler'
+        <button class='navbar-toggler'
                 type='button'
                 data-bs-toggle='collapse'
                 data-bs-target='#navbarNavAltMarkup'
                 aria-controls='navbarNavAltMarkup'
                 aria-expanded='false'
-                aria-label='Toggle navigation'
-        >
+                aria-label='Toggle navigation'>
             <span class='navbar-toggler-icon'></span>
         </button>
         <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
             <div class='navbar-nav'>
-                <a
-                        class='nav-link'
+                <a class='nav-link'
                         aria-current='page'
                         href='/'
                         title=''
                 >Главная</a>
                 <a class='nav-link' href='/about' title='О компании'>
                     О компании</a>
-{{#if sessAdmin}}
+{{#if user}}
                 <a class='nav-link' href='/admin'>Админ панель</a>
+    <a href='/logout' id="logout" class="nav-link">Выход</a>
 
-{{/if}}
-                <a href='/logout' id="logout" class="nav-link">Выход</a>
+    {{/if}}
+
 
                 </div>
                 <a href='/success'></a>
@@ -97,9 +93,13 @@
 <footer class=" py-4 navbar-light bg-light">
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
+
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Админ вход</h5>
+                    <div class="title pb-1">
+                    <h5 class="font-weight-bold" id="staticBackdropLabel">Админ вход </h5>
+                    <span>Укажите данные для входа в систему</span>
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

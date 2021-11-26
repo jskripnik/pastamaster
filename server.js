@@ -26,13 +26,11 @@ app.use(session({
 )
 
 const auth = function(req, res, next) {
-    if (req.session && req.session.user === "admin@pasta.com" && req.session.admin)
+    if (req.session && req.session.user === "admin@pasta.com" && req.session.admin === true)
         return next();
     else
         return res.sendStatus(401);
 };
-
-
 
 app.use(express.static('public'));
 
@@ -40,15 +38,15 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => {
-    res.render('home', {title: 'Тестораскатки и лапшерезки'});
+    res.render('home', {title: 'Тестораскатки и лапшерезки', user: req.session.user});
 });
 app.get('/about', (req, res) => {
-    res.render('about', {title: 'О компании'});
+    res.render('about', {title: 'О компании', user: req.session.user});
 });
 
 app.get('/admin', auth, (req, res) => {
 
-    res.render('./admin/admin');
+    res.render('./admin/admin', {user: req.session.user});
 });
 
 app.post('/admin', urlencodedParser, (req, res) => {
@@ -61,8 +59,8 @@ app.post('/admin', urlencodedParser, (req, res) => {
         } else {
             req.session.admin = true
             req.session.user = req.body.email
-            const sessAdmin = req.session.admin
-            res.render('home', {sessAdmin})
+
+            res.render('./admin/admin', {user: req.session.user})
         }
     });
 });
@@ -78,7 +76,7 @@ app.get ('/logout', (req, res) => {
 
 
 app.get('/admin/product', auth, (req, res) => {
-        res.render('./admin/admin-product')
+        res.render('./admin/admin-product', {user: req.session.user})
 });
 
 app.post('/success', urlencodedParser, (req, res) => {
@@ -93,14 +91,13 @@ app.post('/success', urlencodedParser, (req, res) => {
     fs.readFile('views/write-body.txt', 'utf8' , (err, data) => {
         if (data.includes(name) && data.includes(email))  {
 
-        req.admin = true
             res.render('success', {data: req.body, body})
         } else {
             fs.appendFile("views/write-body.txt", "\n" + "name:" + name + "\n" + "phone:" + phone + "\n" + "email:" + email + "\n",err => {
                 if(err) throw err;
                 console.log(body)
             });
-            res.render('success', {body: body});
+            res.render('success', {body: body, user: req.session.user});
              }
          })
         });
