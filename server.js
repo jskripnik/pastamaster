@@ -26,7 +26,7 @@ app.use(session({
 )
 
 const auth = function(req, res, next) {
-    if (req.session && req.session.user === "admin@pasta.com" && req.session.admin === true)
+    if (req.session && req.session.user === "admin@pasta.com" && req.session.admin)
         return next();
     else
         return res.sendStatus(401);

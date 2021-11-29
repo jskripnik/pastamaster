@@ -72,7 +72,6 @@
                     О компании</a>
 {{#if user}}
                 <a class='nav-link' href='/admin'>Админ панель</a>
-    <a href='/logout' id="logout" class="nav-link">Выход</a>
 
     {{/if}}
 
@@ -97,7 +96,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="title pb-1">
-                    <h5 class="font-weight-bold" id="staticBackdropLabel">Админ вход </h5>
                     <span>Укажите данные для входа в систему</span>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -122,9 +120,15 @@
     </div>
 
     <div class="footer__inner">
-        <div  class="text-end px-5 mx-auto"> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Служебный вход
-        </button></div>
+{{#if user}}
+<div class="text-end px-5 mx-auto">
+    <a href='/logout'> <button type="button" class="btn btn-primary">Выход</button></a>
+</div>
+{{else}}
+    <div  class="text-end px-5 mx-auto"> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Служебный вход
+    </button></div>
+{{/if}}
         <div class='container text-center py-3'>2021, Pastamaster</div>
     </div>
 
